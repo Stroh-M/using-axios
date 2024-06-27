@@ -36,7 +36,10 @@ app.post("/", async (req, res) => {
       filter: filteredResult
     });
   } catch (error) {
-    
+    console.log(error.message);
+    res.render("index.ejs", {
+      notFoundError: error.message
+    })
   }
   // Step 2: Play around with the drop downs and see what gets logged.
   // Use axios to make an API request to the /filter endpoint. Making
