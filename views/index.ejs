@@ -35,26 +35,7 @@
 
       <section id="cards" class="cards">
         <article class="card-item">
-          <% if (locals.filter) {%>
-          <h2 class="card-activity">
-            <!-- Show Activity -->
-            <% let n = Math.floor(Math.random() * filter.length);%> 
-            <%= filter[n].activity %>
-          </h2>
-          <div class="card-info">
-            <span class="card-type">
-              <!-- Show Activity type -->
-              <%= filter[n].type %>
-            </span>
-            <span class="card-participants">
-              <!-- participants: Show participant number -->
-              participants:
-              <span class="card-number">
-                <%= filter[n].participants %>
-              </span>
-            </span>
-          </div>
-          <%} else if (locals.data){%>
+          <%if (locals.data){%>
           <h2 class="card-activity">
             <!-- Show Activity -->
             <%= data.activity %>
@@ -76,14 +57,7 @@
           <!-- Show any errors that were sent from the backend -->
            <%= error %>
         </div>
-        <%} else if (locals.notFoundError) {%>
-          <% if (notFoundError === "Request failed with status code 404") {%>
-          <div id="tag-error" class="tag-error">
-            <!-- Show any errors that were sent from the backend -->
-             <p>No activities match your criteria.</p>
-          </div>
-          <%}%>
-        <%}%>
+        <%} %>
         </article>
         
       </section>
