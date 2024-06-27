@@ -27,8 +27,17 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.body);
-
+  console.log(req.body.participants);
+  try {
+    const filteredResponse = await axios.get(`https://bored-api.appbrewery.com/filter?type=${req.body.type}&participants=${req.body.participants}`);
+    const filteredResult = filteredResponse.data;
+    console.log(filteredResult);
+    res.render("index.ejs", {
+      filter: filteredResult
+    });
+  } catch (error) {
+    
+  }
   // Step 2: Play around with the drop downs and see what gets logged.
   // Use axios to make an API request to the /filter endpoint. Making
   // sure you're passing both the type and participants queries.

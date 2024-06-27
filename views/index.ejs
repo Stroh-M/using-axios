@@ -35,20 +35,26 @@
 
       <section id="cards" class="cards">
         <article class="card-item">
-         <% if (locals.data) {%> 
+         <% if (!locals.data && locals.filter) {%> 
           <h2 class="card-activity">
             <!-- Show Activity -->
-            <%= data.activity %>
+            <%#= data.activity %>
+            <% let n = Math.floor(Math.random() * filter.length);%>
+            <%= filter[n].activity %>
           </h2>
           <div class="card-info">
             <span class="card-type">
               <!-- Show Activity type -->
-              <%= data.type %>
+              <%#= data.type %>
+              <%= filter[n].type %>
             </span>
             <span class="card-participants">
               <!-- participants: Show participant number -->
               participants:
-              <span class="card-number"><%= data.participants %></span>
+              <span class="card-number">
+                <%#= data.participants %>
+                <%= filter[n].participants %>
+              </span>
             </span>
           </div>
           <%}%>
